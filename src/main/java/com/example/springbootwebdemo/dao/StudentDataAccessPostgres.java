@@ -56,7 +56,10 @@ public class StudentDataAccessPostgres implements StudentDao {
 
     @Override
     public void addCourseToStudentByName(String sname, String cname) {
+        // sql for fetching sid from table
         String sql_for_sid = "SELECT id FROM student WHERE name = ? ";
+
+        // sql for fetching cid from table
         String sql_for_cid = "SELECT id FROM course WHERE name = ? ";
 
         UUID sid = UUID.fromString(jdbcTemplate.queryForObject(sql_for_sid, new Object[] {sname}, String.class));
