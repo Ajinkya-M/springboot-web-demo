@@ -4,3 +4,9 @@ app:
     username: postgres
     password: tiger
     pool-size: 30
+
+spring:
+  jpa:
+    show-sql: true
+  hibernate:
+    ddl-auto: update

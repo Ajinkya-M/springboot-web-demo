@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-@RequestMapping("/api/student")
+@RequestMapping("/api/v1/student")
 @RestController
 public class StudentController {
 
