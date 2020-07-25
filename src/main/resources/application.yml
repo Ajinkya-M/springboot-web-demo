@@ -3,7 +3,7 @@ app:
     jdbc-url: jdbc:postgresql://localhost:5432/testdb
     username: postgres
     password: tiger
-    pool-size: 30
+    pool-size: 20
 
 spring:
   jpa:
