@@ -2,6 +2,7 @@ package com.example.springbootwebdemo.service;
 
 import com.example.springbootwebdemo.dao.Course;
 import com.example.springbootwebdemo.dao.CourseRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
+@Slf4j
 public class CourseService {
 
     private final CourseRepository courseRepository;
@@ -30,9 +32,11 @@ public class CourseService {
 
     public void updateHoursforCourse(UUID uuid, Integer hours) {
         Optional<Course> course = courseRepository.findById(uuid);
-        course.ifPresent(course1 -> {
-            course1.setHours(hours);
-            courseRepository.save(course1);
-        });
+        if(course.isPresent()) {
+            log.info("course is fetched from db {}", course.get());
+            course.get().setHours(hours);
+            log.info("course saved to db {}", course.get());
+            System.out.println(courseRepository.save(course.get()));
+        }
     }
 }
